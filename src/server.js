@@ -8,8 +8,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const Post = mongoose.model('Post',{
-	title: {type: String,required: true},
-	content: String,
+	username : {type: String,required: true,minLength:3,maxLength:18},
+	content: {type: String,required: true,minLength:8,maxLength:16},
+	gender: {type: String, enum: ['male', 'female'],required: true},
+	age:{type: Number,  min:18,required: true},
+	email:{type: String, required: true},
 	createdAt: {
 		type: Date,default: () => new Date()
 	}
